@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class Ticket extends BaseEntity {
 
     private Integer seatNumber;
@@ -15,9 +16,18 @@ public class Ticket extends BaseEntity {
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime dateTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private MovieCinema movieCinema;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private User userAccount;
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "seatNumber=" + seatNumber +
+                ", rowNumber=" + rowNumber +
+                ", dateTime=" + dateTime +
+                '}';
+    }
 }
