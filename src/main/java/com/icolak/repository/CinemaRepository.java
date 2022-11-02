@@ -43,8 +43,8 @@ public interface CinemaRepository extends JpaRepository<Cinema, Long> {
     List<Cinema> retrieveAllBasedOnLocationCountry(@Param("locationCountry") String locationCountry);
 
     //Write a native query to read all cinemas by name or sponsored name contains a specific pattern
-    @Query(value = "select * from cinema where name ilike concat('%', 1, '%')" +
-            "or sponsored_name ilike concat('%', 1, '%')", nativeQuery = true)
+    @Query(value = "select * from cinema where name ilike concat('%', ?1, '%')" +
+            "or sponsored_name ilike concat('%', ?1, '%')", nativeQuery = true)
     List<Cinema> retrieveAllByNameOrSponsoredName(@Param("pattern") String pattern);
 
     //Write a native query to sort all cinemas by name
